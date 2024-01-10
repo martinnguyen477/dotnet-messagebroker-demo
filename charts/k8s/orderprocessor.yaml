@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: orderprocessor
-          image: ivanenkomak/orderprocessor:latest
+          image: ivanenkomak/orderprocessor:20231130170617
           env:
             - name: GrpcSettings__OrderGrpcUrl
               value: "http://ordergrpc"

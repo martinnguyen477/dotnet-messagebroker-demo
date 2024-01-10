@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: feedbackapi
-          image: ivanenkomak/feedbackapi:latest
+          image: ivanenkomak/feedbackapi:20231130170557
           env:
             - name: DatabaseSettings__ConnectionString
               value: "mongodb://shopdb:27017"

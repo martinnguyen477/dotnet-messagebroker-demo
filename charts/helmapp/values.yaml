@@ -184,7 +184,7 @@ catalogapi:
       repository: ivanenkomak/catalogapi
       pullPolicy: IfNotPresent
       # Overrides the image tag whose default is the chart appVersion.
-      tag: ""
+      tag: "20231130170459"
 
     imagePullSecrets: []
     nameOverride: ""
@@ -276,7 +276,7 @@ customerapi:
       repository: ivanenkomak/customerapi
       pullPolicy: IfNotPresent
       # Overrides the image tag whose default is the chart appVersion.
-      tag: ""
+      tag: "20231130170558"
 
     imagePullSecrets: []
     nameOverride: ""
@@ -368,7 +368,7 @@ notifications:
       repository: ivanenkomak/notifications
       pullPolicy: IfNotPresent
       # Overrides the image tag whose default is the chart appVersion.
-      tag: ""
+      tag: "20231130170606"
 
     imagePullSecrets: []
     nameOverride: ""
@@ -451,7 +451,7 @@ ocelotapigateway:
       repository: ivanenkomak/ocelotapigateway
       pullPolicy: IfNotPresent
       # Overrides the image tag whose default is the chart appVersion.
-      tag: ""
+      tag: "20231112085856"
 
     imagePullSecrets: []
     nameOverride: ""
@@ -538,11 +538,103 @@ orderapi:
       repository: ivanenkomak/orderapi
       pullPolicy: Always
       # Overrides the image tag whose default is the chart appVersion.
-      tag: ""
+      tag: "20231130170611"
 
     imagePullSecrets: []
     nameOverride: ""
     fullnameOverride: "orderapi"
+
+    serviceAccount:
+      # Specifies whether a service account should be created
+      create: false
+      # Annotations to add to the service account
+      annotations: {}
+      # The name of the service account to use.
+      # If not set and create is true, a name is generated using the fullname template
+      name: ""
+
+    podAnnotations: {}
+
+    podSecurityContext: {}
+      # fsGroup: 2000
+
+    securityContext: {}
+      # capabilities:
+      #   drop:
+      #   - ALL
+      # readOnlyRootFilesystem: true
+      # runAsNonRoot: true
+      # runAsUser: 1000
+
+    service:
+      type: NodePort
+      port: 80
+      targetPort: 80
+      containerPort: 80
+    
+    env:
+      connectionString: "mongodb://shopdb:27017"
+
+    ingress:
+      enabled: true
+      className: ""
+      annotations:
+        nginx.ingress.kubernetes.io/rewrite-target: "/"
+        # kubernetes.io/ingress.class: nginx
+        # kubernetes.io/tls-acme: "true"
+      hosts:
+        - host: orderapi
+          paths:
+            - path: /
+              pathType: Prefix
+              backend:
+                service:
+                  name: orderapi
+                  port:
+                    number: 80
+      tls: []
+      #  - secretName: chart-example-tls
+      #    hosts:
+      #      - chart-example.local
+
+    resources: {}
+      # We usually recommend not to specify default resources and to leave this as a conscious
+      # choice for the user. This also increases chances charts run on environments with little
+      # resources, such as Minikube. If you do want to specify resources, uncomment the following
+      # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+      # limits:
+      #   cpu: 100m
+      #   memory: 128Mi
+      # requests:
+      #   cpu: 100m
+      #   memory: 128Mi
+
+    autoscaling:
+      enabled: false
+      minReplicas: 1
+      maxReplicas: 100
+      targetCPUUtilizationPercentage: 80
+      # targetMemoryUtilizationPercentage: 80
+
+    nodeSelector: {}
+
+    tolerations: []
+
+    affinity: {}
+
+feedbackapi:
+
+    replicaCount: 1
+
+    image:
+      repository: ivanenkomak/feedbackapi
+      pullPolicy: Always
+      # Overrides the image tag whose default is the chart appVersion.
+      tag: "20231130170557"
+
+    imagePullSecrets: []
+    nameOverride: ""
+    fullnameOverride: "feedbackapi"
 
     serviceAccount:
       # Specifies whether a service account should be created
@@ -630,7 +722,7 @@ ordergrpc:
       repository: ivanenkomak/ordergrpc
       pullPolicy: Always
       # Overrides the image tag whose default is the chart appVersion.
-      tag: ""
+      tag: "20231130170614"
 
     imagePullSecrets: []
     nameOverride: ""
@@ -722,7 +814,7 @@ orderprocessor:
       repository: ivanenkomak/orderprocessor
       pullPolicy: IfNotPresent
       # Overrides the image tag whose default is the chart appVersion.
-      tag: ""
+      tag: "20231130170617"
 
     imagePullSecrets: []
     nameOverride: ""
@@ -808,7 +900,7 @@ payment:
       repository: ivanenkomak/payment
       pullPolicy: IfNotPresent
       # Overrides the image tag whose default is the chart appVersion.
-      tag: ""
+      tag: "20231130170620"
 
     imagePullSecrets: []
     nameOverride: ""
@@ -894,7 +986,7 @@ shipment:
       repository: ivanenkomak/shipment
       pullPolicy: IfNotPresent
       # Overrides the image tag whose default is the chart appVersion.
-      tag: ""
+      tag: "20231130170633"
 
     imagePullSecrets: []
     nameOverride: ""
@@ -980,7 +1072,7 @@ shoppingcartapi:
       repository: ivanenkomak/shoppingcartapi
       pullPolicy: IfNotPresent
       # Overrides the image tag whose default is the chart appVersion.
-      tag: ""
+      tag: "20231130170636"
 
     imagePullSecrets: []
     nameOverride: ""
@@ -1066,7 +1158,7 @@ warehouse:
       repository: ivanenkomak/warehouse
       pullPolicy: IfNotPresent
       # Overrides the image tag whose default is the chart appVersion.
-      tag: ""
+      tag: "20231130170645"
 
     imagePullSecrets: []
     nameOverride: ""
@@ -1152,7 +1244,7 @@ warehouseapi:
       repository: ivanenkomak/warehouseapi
       pullPolicy: IfNotPresent
       # Overrides the image tag whose default is the chart appVersion.
-      tag: ""
+      tag: "20231130170649"
 
     imagePullSecrets: []
     nameOverride: ""
@@ -1239,7 +1331,7 @@ webui:
       repository: ivanenkomak/webui
       pullPolicy: IfNotPresent
       # Overrides the image tag whose default is the chart appVersion.
-      tag: ""
+      tag: "20231130170654"
 
     imagePullSecrets: []
     nameOverride: ""
@@ -1325,7 +1417,7 @@ webuiaggregatorapi:
       repository: ivanenkomak/webuiaggregatorapi
       pullPolicy: IfNotPresent
       # Overrides the image tag whose default is the chart appVersion.
-      tag: ""
+      tag: "20231130170700"
 
     imagePullSecrets: []
     nameOverride: ""

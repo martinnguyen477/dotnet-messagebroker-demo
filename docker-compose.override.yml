@@ -162,9 +162,9 @@ services:
     ports:
       - "8016:80"
 
-  search:
-    container_name: search
-    environment:
-      - RUN_MODE=production
-    ports:
-      - "8017:80"
+  # search:
+  #   container_name: search
+  #   environment:
+  #     - RUN_MODE=production
+  #   ports:
+  #     - "8017:80"

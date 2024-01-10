@@ -100,11 +100,11 @@ services:
       context: .
       dockerfile: Discount/Dockerfile
 
-  search:
-    image: ${DOCKER_REGISTRY-}search
-    build:
-      context: .
-      dockerfile: Search/Dockerfile
+  # search:
+  #   image: ${DOCKER_REGISTRY-}search
+  #   build:
+  #     context: .
+  #     dockerfile: Search/Dockerfile
 
   rabbitmq:
     image: rabbitmq:3-management-alpine

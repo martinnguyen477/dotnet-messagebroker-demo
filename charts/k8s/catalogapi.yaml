@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: catalogapi
-          image: ivanenkomak/catalogapi:latest
+          image: ivanenkomak/catalogapi:20231130170459
           env:
             - name: DatabaseSettings__ConnectionString
               value: "mongodb://shopdb:27017"
